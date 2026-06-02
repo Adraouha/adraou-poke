@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>PokéAventura</title>
+  <link rel="stylesheet" href="pokemon.css" />
+</head>
+<body>
+  <main class="app">
+    <header class="header">
+      <div>
+        <h1>PokéAventura</h1>
+        <p class="subtitle">Historia ramificada, decisiones y PokéAPI en un solo juego.</p>
+      </div>
+      <div class="status-bar">
+        <span id="status-scene">Escena: Pueblo Paleta</span>
+        <span id="status-points">Puntos: 0</span>
+        <span id="status-coins">Monedas: 10</span>
+        <span id="status-potions">Pociones: 0</span>
+      </div>
+    </header>
+
+    <section class="game-board">
+      <div class="card scene active" id="scene-pueblo">
+        <h2>Pueblo Paleta</h2>
+        <p>Elige tu Pokémon inicial y comienza la aventura.</p>
+        <div class="starter-grid" id="starter-options"></div>
+      </div>
+
+      <div class="card scene" id="scene-bosque">
+        <h2>Bosque</h2>
+        <p>Busca Pokémon salvajes, captura o huye cuando sea necesario.</p>
+        <div class="wild-box" id="wild-box">
+          <p id="wild-text">Busca un Pokémon salvaje.</p>
+          <div class="wild-details" id="wild-details"></div>
+          <div class="scene-actions" id="bosque-actions"></div>
+        </div>
+      </div>
+
+      <div class="card scene" id="scene-ciudad">
+        <h2>Ciudad</h2>
+        <p>Compra pociones y decide si quieres usarlas para ganar puntos.</p>
+        <div class="scene-actions" id="ciudad-actions"></div>
+      </div>
+
+      <div class="card scene" id="scene-cueva">
+        <h2>Cueva Final</h2>
+        <p>Tu desenlace depende de tu progreso en la aventura.</p>
+        <div class="final-box" id="final-box"></div>
+      </div>
+
+      <div class="card scene" id="scene-batalla">
+        <h2>Arena de Batalla</h2>
+        <div class="battle-arena">
+          <div class="battle-stage">
+            <div class="pokemon-wrap enemy">
+              <img id="battle-enemy-img" src="" alt="Enemigo" />
+              <div class="hp-bar"><div id="enemy-hp-inner" class="hp-inner"></div></div>
+              <div id="enemy-name" class="pokemon-name"></div>
+            </div>
+
+            <div class="pokemon-wrap player">
+              <img id="battle-player-img" src="" alt="Jugador" />
+              <div class="hp-bar"><div id="player-hp-inner" class="hp-inner"></div></div>
+              <div id="player-name" class="pokemon-name"></div>
+            </div>
+          </div>
+
+          <div class="battle-ui">
+            <div class="move-hint">Pulsa 1-4 para seleccionar movimiento, Enter para confirmar.</div>
+            <div class="move-list" id="move-list">
+              <!-- Move buttons injected by JS -->
+            </div>
+            <div class="battle-log" id="battle-log"></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="panel">
+      <article class="message-card">
+        <h3>Mensaje</h3>
+        <p id="message">Bienvenido a tu aventura Pokémon. Elige tu inicial para comenzar.</p>
+      </article>
+
+      <article class="search-card">
+        <h3>Pokédex externa</h3>
+        <div class="search-row">
+          <input id="search-input" type="text" placeholder="Nombre o ID" />
+          <button id="search-button">Buscar</button>
+        </div>
+        <div id="search-result" class="search-result"></div>
+      </article>
+    </section>
+
+    <section class="collection-card">
+      <h3>Pokémon capturados</h3>
+      <div id="captured-list" class="captured-list">No hay Pokémon aún.</div>
+    </section>
+
+    <div class="controls">
+      <div style="display:flex;gap:12px;align-items:center;">
+        <button id="start-battle-button" class="control-button">⚔️ Entrar a combate</button>
+        <button id="restart-button" class="restart-button">🔄 Reiniciar</button>
+      </div>
+      <div id="animation" class="pokeball-animation"></div>
+    </div>
+  </main>
+
+  <script src="pokemon.js"></script>
+</body>
+</html>
